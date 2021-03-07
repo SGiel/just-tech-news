@@ -35,6 +35,7 @@ Post.init(
     {
       sequelize,
       freezeTableName: true,
+      // use underscores instead of camel-casing (i.e. `comment_text` and not `commentText`)      underscored: true,
       underscored: true,
       modelName: 'post'
     }
