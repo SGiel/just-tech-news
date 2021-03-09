@@ -12,6 +12,8 @@ app.use(express.urlencoded({ extended: true }));
 // turn on routes
 app.use(routes);
 
+// adding a comment
+
 // turn on connection to db and server
 // force:true, drops and re-creates all of the database tables and associations on startup.
 // same as DROP TABLE IF EXISTS in sql
