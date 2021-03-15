@@ -43,7 +43,7 @@ app.use(routes);
 // turn on connection to db and server
 // force:true, drops and re-creates all of the database tables and associations on startup.
 // same as DROP TABLE IF EXISTS in sql
-// necessary if have new table associations???
+// necessary if have new table associations
 sequelize.sync({ force: false }).then(() => {
   app.listen(PORT, () => console.log(`Now listening at https://localhost:${PORT}`));
 });

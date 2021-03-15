@@ -15,8 +15,13 @@
                 <a href="/">Just Tech News</a>
             </h1>
             <nav>
+ {{!-- 14.3.7 we are checking for loggedIn in the main layout, but we're only passing loggedIn to the single-post.handlebars 
+  template. Fortunately, variables that are passed to view templates are automatically passed to the main layout.  --}}
+                {{#if loggedIn}}
                 <button id="logout" class="btn-no-style">logout</button>
+                {{else}}
                 <a href="/login">login</a>
+                {{/if}}
             </nav>
         </header>
         <main>
@@ -27,7 +32,9 @@
         </footer>
     </div>
 
+    {{#if loggedIn}}
     <script src="/javascript/logout.js"></script>
+    {{/if}}
 </body>
 
 </html>

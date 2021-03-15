@@ -94,16 +94,34 @@ router.post('/', (req, res) => {
   });
 });
 
-// PUT /api/posts/upvote
+// PUT /api/posts/upvote - used in module 13
+// router.put('/upvote', (req, res) => {
+//   // custom static method created in models/Post.js
+//   Post.upvote(req.body, { Vote })
+//   .then(updatedPostData => res.json(updatedPostData))
+//   .catch(err => {
+//     console.log(err);
+//     res.status(400).json(err);
+//   });
+// });
+
+// updated for module 14 to get userid with upvote
 router.put('/upvote', (req, res) => {
-  // custom static method created in models/Post.js
-  Post.upvote(req.body, { Vote })
-  .then(updatedPostData => res.json(updatedPostData))
-  .catch(err => {
-    console.log(err);
-    res.status(400).json(err);
-  });
+  // make sure the session exists first
+  if (req.session) {
+    // upvote is a custom static method created in models/Post.js
+    
+    // pass session id along with all destructured properties on req.body
+    Post.upvote({ ...req.body, user_id: req.session.user_id }, { Vote, Comment, User })
+      .then(updatedVoteData => res.json(updatedVoteData))
+      .catch(err => {
+        console.log(err);
+        res.status(500).json(err);
+      });
+  }
 });
+
+// Module 13 old code that has the code moved to models/Post.js 
 // router.put('/upvote', (req, res) => {
 //   Vote.create({
 //     user_id: req.body.user_id,
