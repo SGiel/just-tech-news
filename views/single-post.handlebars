@@ -1,15 +1,7 @@
-<article class="post">
-  <div class="title">
-    <a href="{{post.post_url}}" target="_blank">{{post.title}}</a>
-    <span>({{post.post_url}})</span>
-  </div>
-  <div class="meta">
-    {{post.vote_count}} point(s) by {{post.user.username}} on
-    {{post.created_at}}
-    |
-    <a href="/post/{{post.id}}">{{post.comments.length}} comment(s)</a>
-  </div>
-</article>
+{{!-- USED BY controllers/home-routes.js --}}
+
+{{!-- to include a partial use > and then name of file and object passing --}}
+{{> post-info post }}
 
 {{#if loggedIn}}
 <form class="comment-form">
@@ -24,7 +16,7 @@
 </form>
 {{/if}}
 
-<div class="comments">
+{{!-- <div class="comments">
   {{#each post.comments}}
   <section class="comment">
     <div class="meta">
@@ -35,7 +27,9 @@
     </div>
   </section>
   {{/each}}
-</div>
+</div> --}}
+
+{{> comments post.comments}}
 
 {{#if loggedIn}}
 <script src="/javascript/comment.js"></script>
