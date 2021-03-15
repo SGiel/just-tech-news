@@ -1,0 +1,12 @@
+{{!-- USED BY controllers/home-routes.js --}}
+
+<ol class="post-list">
+{{!-- looping over each item in post array with #each and renaming items to post --}}
+  {{#each posts as |post|}}
+  <li>
+    {{!-- to include a partial use > and then name of file and object passing --}}
+    {{> post-info post }}
+  </li>
+  {{!-- end of looping over each item in post array --}}
+  {{/each}}
+</ol>
